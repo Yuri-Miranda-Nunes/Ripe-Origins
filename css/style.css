@@ -1,0 +1,11 @@
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.section1 {
+    background-image: url(https://www.tijuana.com.br/images/slide2.jpg);
+}
+nav {
+    background-color: #021F30;
+    color: #fff;
+}
