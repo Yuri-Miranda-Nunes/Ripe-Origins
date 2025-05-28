@@ -1,11 +1,23 @@
+* {
+    
+}
 .img-fluid {
     max-width: 100%;
     height: auto;
 }
-.section1 {
-    background-image: url(https://www.tijuana.com.br/images/slide2.jpg);
+section {
+    color: #DA7635;
 }
 nav {
-    background-color: #021F30;
-    color: #fff;
+    background-color: #0C090D;
+    padding: 1rem ;
+}
+a {
+    color: #ffffff ;
+}
+a:hover {
+    color: #DA7635 ;
+}
+.bg-body-tertiary {
+    background-color: #0C090D ;
 }
