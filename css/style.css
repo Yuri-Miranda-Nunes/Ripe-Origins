@@ -1,23 +1,19 @@
-* {
-    
-}
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
 section {
     color: #DA7635;
 }
 nav {
-    background-color: #0C090D;
-    padding: 1rem ;
+    background-color: #021F30;
+    color: #fff;
+    
 }
-a {
-    color: #ffffff ;
-}
-a:hover {
-    color: #DA7635 ;
-}
-.bg-body-tertiary {
-    background-color: #0C090D ;
+.nav-link {
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+    font-size: 20px;
 }
