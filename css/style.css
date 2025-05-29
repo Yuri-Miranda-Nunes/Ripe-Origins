@@ -17,3 +17,6 @@ nav {
     transition: color 0.3s ease;
     font-size: 20px;
 }
+#home {
+    background-image: url(https://www.tijuana.com.br/images/slide2.jpg);
+}

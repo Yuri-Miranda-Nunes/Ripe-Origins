@@ -1,11 +1,896 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cardápio - Ripe Origins</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3d72 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(44, 90, 160, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.05) 10px,
+                    rgba(255, 255, 255, 0.05) 20px);
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        /* Carousel Styles */
+        .hero-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+
+        .slide-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .slide-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-description {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .slide-price {
+            font-size: 2rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            text-shadow: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-image {
+            width: 250px;
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .slide-image:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Menu Categories */
+        .menu-section {
+            padding: 4rem 0;
+        }
+
+        .category {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category h2 {
+            color: #2c5aa0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .category h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-3px);
+            border-color: #ff6b35;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+        }
+
+        .menu-item.featured {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: 3px solid #d4af37;
+            position: relative;
+        }
+
+        .menu-item.featured::after {
+            content: '⭐ ESPECIALIDADE DA CASA';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #d4af37;
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(15deg);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .menu-item.featured .item-name {
+            color: white;
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff6b35;
+            background: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item.featured .item-price {
+            background: rgba(255, 255, 255, 0.9);
+            color: #ff6b35;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item.featured .item-description {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .menu-item.featured .tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .tag.spicy {
+            background: #dc3545;
+            color: white;
+        }
+
+        .tag.vegetarian {
+            background: #28a745;
+            color: white;
+        }
+
+        .tag.popular {
+            background: #ffc107;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5aa0;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
+
 <body>
-    
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ripe Origins</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="background-color: #021F30; background-size: cover; background-position: center; height: 100vh;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Nosso Cardápio</h1>
+                <p>Onde cada mordida é uma fiesta!</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="menu-section">
+        <div class="container">
+            <!-- Especialidade da Casa -->
+            <div class="category fade-in">
+                <h2>🌟 Especialidade da Casa</h2>
+                <div class="menu-grid">
+                    <div class="menu-item featured">
+                        <div class="item-header">
+                            <h3 class="item-name">Quiche Loco</h3>
+                            <span class="item-price">R$ 34,90</span>
+                        </div>
+                        <p class="item-description">
+                            Nossa receita secreta exclusiva! Uma explosão de sabores mexicanos em uma experiência
+                            gastronômica única que conquistou corações em todo o sudeste brasileiro.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag popular">Mais Pedido</span>
+                            <span class="tag">Receita Secreta</span>
+                            <span class="tag">Exclusivo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tacos -->
+            <div class="category fade-in">
+                <h2>🌮 Tacos Tradicionais</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Taco de Carne Asada</h3>
+                            <span class="item-price">R$ 18,90</span>
+                        </div>
+                        <p class="item-description">
+                            Carne bovina grelhada temperada com especiarias mexicanas, cebola, coentro fresco e molho
+                            verde picante.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag popular">Popular</span>
+                            <span class="tag spicy">Picante</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Taco de Pollo</h3>
+                            <span class="item-price">R$ 16,90</span>
+                        </div>
+                        <p class="item-description">
+                            Frango desfiado marinado em adobo, abacate, tomate, cebola roxa e molho de lima.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Tradicional</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Taco Vegetariano</h3>
+                            <span class="item-price">R$ 15,90</span>
+                        </div>
+                        <p class="item-description">
+                            Feijão preto, queijo fresco, abacate, alface, tomate e molho de iogurte com ervas.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag vegetarian">Vegetariano</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Taco de Pescado</h3>
+                            <span class="item-price">R$ 22,90</span>
+                        </div>
+                        <p class="item-description">
+                            Peixe grelhado com temperos mexicanos, repolho roxo, molho de chipotle e limão.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Frutos do Mar</span>
+                            <span class="tag spicy">Picante</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burritos -->
+            <div class="category fade-in">
+                <h2>🌯 Burritos Gigantes</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Burrito California</h3>
+                            <span class="item-price">R$ 28,90</span>
+                        </div>
+                        <p class="item-description">
+                            Carne bovina, arroz mexicano, feijão preto, queijo, guacamole, molho pico de gallo e batata
+                            frita.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag popular">Popular</span>
+                            <span class="tag">Grande</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Burrito de Pollo Verde</h3>
+                            <span class="item-price">R$ 26,90</span>
+                        </div>
+                        <p class="item-description">
+                            Frango grelhado, arroz de coentro e lima, feijão branco, molho verde e queijo derretido.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Tradicional</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Burrito Vegano</h3>
+                            <span class="item-price">R$ 24,90</span>
+                        </div>
+                        <p class="item-description">
+                            Quinoa, feijão preto, legumes grelhados, abacate, tomate e molho tahine com lime.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag vegetarian">Vegano</span>
+                            <span class="tag">Saudável</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quesadillas -->
+            <div class="category fade-in">
+                <h2>🧀 Quesadillas Derretidas</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Quesadilla Clássica</h3>
+                            <span class="item-price">R$ 19,90</span>
+                        </div>
+                        <p class="item-description">
+                            Queijo monterey jack derretido em tortilla crocante, servida com molho pico de gallo e creme
+                            azedo.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Clássico</span>
+                            <span class="tag vegetarian">Vegetariano</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Quesadilla de Carne</h3>
+                            <span class="item-price">R$ 24,90</span>
+                        </div>
+                        <p class="item-description">
+                            Carne temperada, queijos mistos, pimentões, cebola e jalapeños suaves.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag popular">Popular</span>
+                            <span class="tag spicy">Levemente Picante</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Quesadilla de Frango com Abacaxi</h3>
+                            <span class="item-price">R$ 23,90</span>
+                        </div>
+                        <p class="item-description">
+                            Frango desfiado, abacaxi grelhado, queijo, cebola roxa e molho chipotle doce.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Doce & Salgado</span>
+                            <span class="tag">Tropical</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bebidas -->
+            <div class="category fade-in">
+                <h2>🍹 Bebidas Refrescantes</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Água de Jamaica</h3>
+                            <span class="item-price">R$ 8,90</span>
+                        </div>
+                        <p class="item-description">
+                            Bebida tradicional mexicana feita com flores de hibisco, levemente adoçada e servida gelada.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Tradicional</span>
+                            <span class="tag">Natural</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Horchata</h3>
+                            <span class="item-price">R$ 12,90</span>
+                        </div>
+                        <p class="item-description">
+                            Bebida cremosa de arroz com canela e baunilha, servida bem gelada com gelo e canela
+                            polvilhada.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Doce</span>
+                            <span class="tag popular">Popular</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Margarita Sem Álcool</h3>
+                            <span class="item-price">R$ 14,90</span>
+                        </div>
+                        <p class="item-description">
+                            Lima fresca, xarope de agave, água com gás e sal na borda. Refrescante e saborosa!
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Refrescante</span>
+                            <span class="tag">Cítrico</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Limonada Mexicana</h3>
+                            <span class="item-price">R$ 10,90</span>
+                        </div>
+                        <p class="item-description">
+                            Lima fresca, açúcar mascavo, água gasosa e uma pitada de sal. Combinação perfeita!
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Refrescante</span>
+                            <span class="tag">Natural</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sobremesas -->
+            <div class="category fade-in">
+                <h2>🍮 Sobremesas Doces</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Flan Mexicano</h3>
+                            <span class="item-price">R$ 16,90</span>
+                        </div>
+                        <p class="item-description">
+                            Pudim de leite condensado com calda de caramelo e pitada de canela. Cremoso e irresistível!
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Tradicional</span>
+                            <span class="tag popular">Popular</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Churros com Doce de Leite</h3>
+                            <span class="item-price">R$ 14,90</span>
+                        </div>
+                        <p class="item-description">
+                            Churros crocantes polvilhados com açúcar e canela, servidos com doce de leite quentinho.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Crocante</span>
+                            <span class="tag">Quente</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h3 class="item-name">Tres Leches</h3>
+                            <span class="item-price">R$ 18,90</span>
+                        </div>
+                        <p class="item-description">
+                            Bolo úmido embebido em três tipos de leite, coberto com chantilly e canela.
+                        </p>
+                        <div class="item-tags">
+                            <span class="tag">Cremoso</span>
+                            <span class="tag">Tradicional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ripe Origins. Onde cada mordida é uma fiesta!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Menu item hover effects
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const container = document.getElementById('carouselContainer');
+        const dots = document.querySelectorAll('.dot');
+
+        function updateCarousel() {
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function moveSlide(direction) {
+            currentIndex = (currentIndex + direction + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Auto-rotate
+        setInterval(() => {
+            moveSlide(1);
+        }, 7000);
+
+    </script>
 </body>
+
 </html>
