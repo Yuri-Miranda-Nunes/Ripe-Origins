@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Serviço - Ripe Origins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ripe-yellow': '#FFD552',
+                        'ripe-orange': '#FF992A',
+                        'ripe-light-green': '#AAE26A',
+                        'ripe-green': '#29AE6A',
+                        'ripe-bright-green': '#29E26A',
+                        'ripe-dark-blue': '#215663',
+                        'ripe-navy': '#021F30',
+                    },
+                    fontFamily: {
+                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'float': 'float 20s linear infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'rotate-slow': 'spin 30s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="fixed top-0 w-full glass-effect z-50 transition-all duration-300">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="#home" class="text-xl md:text-2xl font-bold text-ripe-dark-blue flex items-center">
+                    Ripe Origins
+                    <span class="ml-2 animate-bounce-slow">🌮</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="text-ripe-navy font-medium hover:text-ripe-dark-blue hover:-translate-y-1 transition-all duration-300 relative group">
+                        Início
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ripe-dark-blue group-hover:w-full transition-all duration-300"></span>
+                    </a></li>
+                    <li><a href="#cardapio" class="text-ripe-navy font-medium hover:text-ripe-dark-blue hover:-translate-y-1 transition-all duration-300 relative group">
+                        Cardápio
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ripe-dark-blue group-hover:w-full transition-all duration-300"></span>
+                    </a></li>
+                    <li><a href="#sobre" class="text-ripe-navy font-medium hover:text-ripe-dark-blue hover:-translate-y-1 transition-all duration-300 relative group">
+                        Sobre Nós
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ripe-dark-blue group-hover:w-full transition-all duration-300"></span>
+                    </a></li>
+                    <li><a href="#contato" class="text-ripe-navy font-medium hover:text-ripe-dark-blue hover:-translate-y-1 transition-all duration-300 relative group">
+                        Contato
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ripe-dark-blue group-hover:w-full transition-all duration-300"></span>
+                    </a></li>
+                    <li><a href="#termos" class="text-ripe-navy font-medium hover:text-ripe-dark-blue hover:-translate-y-1 transition-all duration-300 relative group">
+                        Termos
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-ripe-dark-blue group-hover:w-full transition-all duration-300"></span>
+                    </a></li>
+                </ul>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden flex flex-col space-y-1 p-2" onclick="toggleMobileMenu()" id="mobileMenuBtn">
+                    <span class="w-6 h-0.5 bg-ripe-dark-blue transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-ripe-dark-blue transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-ripe-dark-blue transition-all duration-300"></span>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobileNav">
+                <div class="pb-4 space-y-2">
+                    <a href="#home" class="block py-2 px-4 text-ripe-navy font-medium hover:bg-gray-50 rounded-lg transition-colors duration-200" onclick="closeMobileMenu()">Início</a>
+                    <a href="#cardapio" class="block py-2 px-4 text-ripe-navy font-medium hover:bg-gray-50 rounded-lg transition-colors duration-200" onclick="closeMobileMenu()">Cardápio</a>
+                    <a href="#sobre" class="block py-2 px-4 text-ripe-navy font-medium hover:bg-gray-50 rounded-lg transition-colors duration-200" onclick="closeMobileMenu()">Sobre Nós</a>
+                    <a href="#contato" class="block py-2 px-4 text-ripe-navy font-medium hover:bg-gray-50 rounded-lg transition-colors duration-200" onclick="closeMobileMenu()">Contato</a>
+                    <a href="#termos" class="block py-2 px-4 text-ripe-navy font-medium hover:bg-gray-50 rounded-lg transition-colors duration-200" onclick="closeMobileMenu()">Termos</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-20 min-h-screen bg-white"> <!-- Added pt-20 for header spacing -->
+        <div class="container mx-auto px-4 py-12">
+            <!-- Header Section -->
+            <div class="text-center mb-12 bg-gradient-to-r from-ripe-yellow/20 to-ripe-orange/20 py-12 rounded-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-ripe-dark-blue mb-4">
+                    Termos de Serviço
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Por favor, leia atentamente nossos termos de serviço antes de utilizar nossos produtos e serviços.
+                </p>
+                <div class="mt-6 text-sm text-gray-500">
+                    <p>Última atualização: 30 de maio de 2025</p>
+                </div>
+            </div>
+
+            <!-- Terms Content -->
+            <div class="max-w-4xl mx-auto">
+                <div class="grid gap-6">
+                    <!-- Section 1 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">1</span>
+                            Aceitação dos Termos
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Ao utilizar os serviços da Ripe Origins, incluindo nosso site, aplicativo móvel e visitas aos nossos restaurantes, você concorda em cumprir e ficar vinculado a estes Termos de Serviço. Se você não concordar com qualquer parte destes termos, não deverá usar nossos serviços.
+                        </p>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">2</span>
+                            Descrição dos Serviços
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            A Ripe Origins oferece serviços de restaurante especializado em culinária mexicana moderna, incluindo:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li>Serviços de alimentação em nossos restaurantes físicos</li>
+                            <li>Serviços de delivery e take-away</li>
+                            <li>Reservas online através de nosso site</li>
+                            <li>Newsletter e comunicações promocionais</li>
+                            <li>Programa de fidelidade e benefícios especiais</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">3</span>
+                            Responsabilidades do Cliente
+                        </h2>
+                        <div class="text-gray-700 leading-relaxed space-y-4">
+                            <p><strong>Comportamento Adequado:</strong> Os clientes devem manter um comportamento respeitoso em nossas instalações e nas interações com nossa equipe.</p>
+                            <p><strong>Informações Precisas:</strong> Ao fazer reservas ou pedidos, você deve fornecer informações precisas e atualizadas.</p>
+                            <p><strong>Pagamento:</strong> Os pagamentos devem ser efetuados conforme os métodos aceitos e nos prazos estabelecidos.</p>
+                            <p><strong>Cancelamentos:</strong> Reservas podem ser canceladas até 2 horas antes do horário agendado sem cobrança de taxas.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">4</span>
+                            Política de Privacidade
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Respeitamos sua privacidade e estamos comprometidos em proteger suas informações pessoais. Coletamos apenas as informações necessárias para:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li>Processar pedidos e reservas</li>
+                            <li>Melhorar nossos serviços</li>
+                            <li>Enviar comunicações promocionais (apenas com seu consentimento)</li>
+                            <li>Cumprir obrigações legais</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">5</span>
+                            Propriedade Intelectual
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Todos os conteúdos de nosso site, incluindo textos, imagens, logotipos, receitas (incluindo nosso famoso Quiche Loco), marcas registradas e outros materiais são propriedade da Ripe Origins ou de nossos licenciadores e estão protegidos por leis de propriedade intelectual.
+                        </p>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">6</span>
+                            Limitação de Responsabilidade
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            A Ripe Origins não será responsável por:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li>Danos indiretos, incidentais ou consequenciais</li>
+                            <li>Perda de lucros ou dados</li>
+                            <li>Interrupções no serviço devido a circunstâncias fora de nosso controle</li>
+                            <li>Reações alérgicas (sempre informe sobre alergias alimentares)</li>
+                        </ul>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">7</span>
+                            Modificações dos Termos
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Reservamo-nos o direito de modificar estes termos a qualquer momento. As alterações entrarão em vigor imediatamente após sua publicação em nosso site. Recomendamos que você revise periodicamente estes termos para se manter informado sobre quaisquer atualizações.
+                        </p>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section class="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 p-6 md:p-8">
+                        <h2 class="text-2xl font-bold text-ripe-dark-blue mb-4 flex items-center">
+                            <span class="bg-gradient-to-r from-ripe-orange to-ripe-yellow text-white rounded-full w-8 h-8 flex items-center justify-center text-sm mr-3">8</span>
+                            Contato
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Se você tiver dúvidas sobre estes Termos de Serviço, entre em contato conosco:
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4 space-y-2">
+                            <p class="text-gray-700"><strong>Endereço:</strong> Rua Avenida Paulista, 1234 - Bela Vista, São Paulo - SP, 01310-100</p>
+                            <p class="text-gray-700"><strong>E-mail:</strong> contato@ripeorigins.com.br</p>
+                            <p class="text-gray-700"><strong>Telefone:</strong> (11) 3456-7890</p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="mt-12 text-center bg-gradient-to-r from-ripe-dark-blue to-ripe-navy rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-4">Experimente o Autêntico Sabor Mexicano!</h3>
+                    <p class="text-gray-100 mb-6">
+                        Venha conhecer nossa culinária única e saborosa!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#cardapio" class="bg-ripe-yellow text-ripe-navy px-6 py-3 rounded-lg font-semibold hover:bg-ripe-orange transition-colors duration-300">
+                            Ver Cardápio
+                        </a>
+                        <a href="#contato" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-ripe-navy transition-colors duration-300">
+                            Fazer Reserva
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-ripe-navy to-black text-white py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg lg:text-xl font-bold text-ripe-orange mb-4">Ripe Origins</h3>
+                    <p class="text-gray-300 leading-relaxed">Revolucionando a experiência gastronômica mexicana no Brasil com modernidade, qualidade e autenticidade.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg lg:text-xl font-bold text-ripe-orange mb-4">Unidades</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">São Paulo - Paulista (Sede)</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">São Paulo - Augusta</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">São Paulo - Oscar Freire</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">São Paulo - Faria Lima</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Campinas - Centro</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">São José dos Campos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg lg:text-xl font-bold text-ripe-orange mb-4">Em Breve</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Rio de Janeiro - Copacabana</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Rio de Janeiro - Ipanema</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Belo Horizonte - Savassi</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Belo Horizonte - Centro</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Belo Horizonte - Funcionários</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg lg:text-xl font-bold text-ripe-orange mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Cardápio Completo</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Sobre Nossa Equipe</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Trabalhe Conosco</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Termos de Serviço</li>
+                        <li class="hover:text-ripe-orange transition-colors cursor-pointer">Política de Privacidade</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-8 border-t border-ripe-dark-blue">
+                <p class="text-gray-400">&copy; 2025 Ripe Origins. Todos os direitos reservados. Onde cada mordida é uma fiesta! 🌮</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add custom style for glass effect -->
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+
+    <script>
+         // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const spans = menuBtn.querySelectorAll('span');
+            
+            mobileNav.classList.toggle('hidden');
+            
+            if (mobileNav.classList.contains('hidden')) {
+                // Menu closed
+                spans[0].style.transform = 'rotate(0) translateY(0)';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'rotate(0) translateY(0)';
+            } else {
+                // Menu open
+                spans[0].style.transform = 'rotate(-45deg) translateY(6px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(45deg) translateY(-6px)';
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const spans = menuBtn.querySelectorAll('span');
+            
+            mobileNav.classList.add('hidden');
+            spans[0].style.transform = 'rotate(0) translateY(0)';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'rotate(0) translateY(0)';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (!menuBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form handling
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Obrigado por se inscrever! Em breve você receberá nossas novidades no e-mail: ' + email);
+                this.reset();
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+        </script>
+</body>
+</html>
