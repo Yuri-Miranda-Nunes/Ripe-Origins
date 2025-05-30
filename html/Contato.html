@@ -10,8 +10,22 @@
             theme: {
                 extend: {
                     colors: {
-                        'ripe-blue': '#1a5fb4',
-                        'ripe-gold': '#ffd700',
+                        'ripe-yellow': '#FFD552',
+                        'ripe-orange': '#FF992A',
+                        'ripe-light-green': '#AAE26A',
+                        'ripe-green': '#29AE6A',
+                        'ripe-bright-green': '#29E26A',
+                        'ripe-dark-blue': '#215663',
+                        'ripe-navy': '#021F30',
+                    },
+                    fontFamily: {
+                        'sans': ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'float': 'float 20s linear infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'rotate-slow': 'spin 30s linear infinite',
                     }
                 }
             }
@@ -63,6 +77,50 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+
+
+        .hero-bg {
+            background-image: url(https://www.tijuana.com.br/images/slide2.jpg);
+            background-size: cover;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FF992A, #29AE6A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-shadow:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .pattern-bg {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="60" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .pattern-dots {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
         }
     </style>
 </head>
@@ -514,6 +572,7 @@
         document.querySelectorAll('.hover-lift').forEach(element => {
             observer.observe(element);
         });
+        
     </script>
 </body>
 </html>
